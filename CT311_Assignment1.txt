@@ -1,0 +1,35 @@
+# CT311 Assignment1
+# Joan Rohan
+# 15104654
+
+Question 1
+
+All return the same size. 
+The size of an int is 4 bytes.
+The long also returned a size of 4 bytes.  
+Pointers store the address of variables so the size of a pointer will return the size of a generic pointer object
+which is 4 bytes.
+
+Question 2
+
+For this question push(), pop(), and enqueue() needed a double-star pointer.
+The double-star pointer allows you to pass a pointer to pointer parameter to change the head pointer directly, instead of returning a new pointer.
+
+Question 3
+
+Similar testing (as question 2) was implemented in question 3 unfortunately I was unable to retrieve the results.
+I am not sure what was wrong with my test.
+
+Question 4
+
+There is no way to start at the tail of a singly linked list and work back towards the head.
+In order to traverse a linked list in reverse iterate through the list from head to tail and store a pointer to each node in an array as it is passed. 
+The new array is a copy of the original array in reverse, that array can then be traversed.
+The memory needed would be the size of the array of pointers as well as the variables.
+The list can not be reversed in anything less than O(n) using this iterative method.
+
+To improve the memory usage a doubly linked list could be used, with every node storing a pointer to the pervious node.
+A pointer to the head and tail nodes should also be stored in order to traverse the list from tail to head.
+Compared to a singly linked list there is an extra memory requirment for the addition of a previous node pointer, 
+but it removes the need to create a new array in order to traverse from tail to head which is saving memory.
+

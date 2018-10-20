@@ -21,5 +21,30 @@ void runTests(){
   traverse(l);
   printf("\n");
 
+  // Test length
+  printf("Test length of list=%d\n\n", length(l));
+
+  //Test pushing to the head of the list
+  push(&l, "a string (0)", 30);
+  traverse(l);
+  printf("\n");
+
+  //Test popping
+  listElement* node = pop(&l);
+  traverse(l);
+  freeListElement(node);
+  printf("\n");
+
+  //Test enqueuing
+  push(&l, "a new string (0)", 30);
+  traverse(l);
+  printf("\n");
+
+  //Test dequeue
+  node = dequeue(&l);
+  traverse(l);
+  freeListElement(node);
+  printf("\n");
+
   printf("\nTests complete.\n");
 }

@@ -59,3 +59,69 @@ void deleteAfter(listElement* after){
   free(delete->data);
   free(delete);
 }
+
+// Return num of elements in the Linked List
+int length(listElement* list) {
+	if (list == NULL) {
+		return 0;
+	}
+	else {
+		return length(list->next) + 1;
+	}
+}
+
+// Push a new element onto the head of the list
+void push(listElement** list, char* data, size_t size) {
+	// check if list is empty
+	if (list == NULL) {
+		return;
+	}
+	// create a new element and inset at head of the list
+	listElement* newHead = createEl(data, size);
+	newHead->next = *list;
+	*list = newHead;
+}
+
+// Pop an element from the head of the list
+listElement* pop(listElement** list) {
+	// check if list is empty
+	if (list == NULL) {
+		return NULL;
+	}
+	listElement* oldHead = *list;
+	*list = oldHead->next; 
+	oldHead->next = NULL; 
+	return oldHead;
+}
+
+// enqueue a new element onto the head of the list
+void enqueue(listElement** list, char* data, size_t size) {
+	// use push method to add to head of the list
+	push(list, data, size);
+}
+
+// Dequeue an element from the tail of the list
+listElement* dequeue(listElement** list) {
+	// check if list is empty
+	if (list == NULL) {
+		return NULL;
+	}
+
+	// Find tail of list and the element befor it
+	listElement* tail = *list;	
+	listElement* newTail = NULL;
+	
+	while (tail->next != NULL) {
+		newTail = tail;
+		tail = tail->next;
+	}	
+		// Remove tail from the list
+		newTail->next = NULL;
+		return tail;
+}
+	void freeListElement(listElement* delete) {
+	//need to free the memory because we used malloc
+	free(delete->data);
+	free(delete);
+}
+
