@@ -1,6 +1,6 @@
-# CT311 Assignment1
-# Joan Rohan
-# 15104654
+## CT311 Assignment1
+## Joan Rohan
+## 15104654
 
 Question 1
 
@@ -17,8 +17,7 @@ The double-star pointer allows you to pass a pointer to pointer parameter to cha
 
 Question 3
 
-Similar testing (as question 2) was implemented in question 3 unfortunately I was unable to retrieve the results.
-I am not sure what was wrong with my test.
+Similar testing (as question 2) was implemented in question 3
 
 Question 4
 

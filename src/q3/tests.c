@@ -2,44 +2,37 @@
 #include "genericLinkedList.h"
 #include "tests.h"
 
-void printChar(void *data) {
-	printf("%c -> ", *((char*)data));
-}
 
-void printStr(void *data) {
-	printf("%s -> ", (char*)data);
-}
-
-void printInt(void *data) {
-	printf("%d -> ", *((int*)data));
-}
-
-void printDouble(void *data) {
-	printf("%lf -> ", *((double*)data));
-}
 void runTests() {
 	printf("Tests running...\n");
 
-	//testing char print function and traverse
-	listElement* l = createEl("Test String (1).", 30, &printStr);
+	//char c = 'c';
+	//listElement* l = createEl(&c, sizeof(char), &printChar);
+	listElement* l = createEl("Test String.", 30, &printStr);
 	traverse(l);
 	printf("\n");
 
 	//Test insert after
 	char x = 'x';
-	int y = 50;
-	double z = 100.00;
-
 	listElement *l2 = insertAfter(l, &x, sizeof(char), &printChar);
-	listElement *l3 = insertAfter(l2, &y, sizeof(y), &printInt);
-	listElement *l4 = insertAfter(l3, &z, sizeof(z), &printDouble);
- 	traverse(l);
-	printf("\n");
+	traverse(l);
+	printf("char inserted \n\n");
+
+	int y = 50;
+	listElement *l3 = insertAfter(l2, &y, sizeof(int), &printInt);
+	traverse(l);
+	printf("int inserted \n\n");
+
+	double z = 100.00;
+	listElement *l4 = insertAfter(l3, &z, sizeof(double), &printDouble);
+	traverse(l);
+	printf("double inserted \n\n");	
+ 	
 	
 	// Test delete after
 	deleteAfter(l);
 	traverse(l);
-	printf("\n");
+	printf("element after given el deleted\n\n");
 
 	// Test length
 	printf("Test length of list=%d\n\n", length(l));
@@ -49,24 +42,24 @@ void runTests() {
 	int num = 100;
 	push(&l, &num, sizeof(int), &printInt);
 	traverse(l);
-	printf("\n");
+	printf("int pushed to head of list \n\n");
 
 	//Test popping
 	listElement* node = pop(&l);
 	freeListElement(node);
 	traverse(l);
-	printf("\n");
+	printf("int popped from head of list\n\n");
 
 	//Test enqueuing
-	push(&l, "a new string (0)", 30, &printStr);
+	enqueue(&l, "a new string (0)", 30, &printStr);
 	traverse(l);
-	printf("\n");
+	printf("a string enqueued to head of list\n\n");
 
 	//Test dequeue
 	node = dequeue(&l);
 	traverse(l);
 	freeListElement(node);
-	printf("\n");
+	printf("element dequeued from tail of list\n\n");
 
 	printf("\nTests complete.\n");
 }

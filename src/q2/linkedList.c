@@ -72,10 +72,6 @@ int length(listElement* list) {
 
 // Push a new element onto the head of the list
 void push(listElement** list, char* data, size_t size) {
-	// check if list is empty
-	if (list == NULL) {
-		return;
-	}
 	// create a new element and inset at head of the list
 	listElement* newHead = createEl(data, size);
 	newHead->next = *list;
@@ -96,8 +92,11 @@ listElement* pop(listElement** list) {
 
 // enqueue a new element onto the head of the list
 void enqueue(listElement** list, char* data, size_t size) {
-	// use push method to add to head of the list
-	push(list, data, size);
+	//same as push
+	// create a new element and inset at head of the list
+	listElement* newHead = createEl(data, size);
+	newHead->next = *list;
+	*list = newHead;
 }
 
 // Dequeue an element from the tail of the list
